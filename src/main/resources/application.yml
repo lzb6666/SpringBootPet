@@ -1,0 +1,10 @@
+mybatis:
+  typeAliasesPackage: com.test.pet.po
+spring:
+  datasource:
+    url: jdbc:mysql://132.232.3.239:3306/dbpet?useSSL=false
+    username: pet
+    password: pet
+    driver-class-name: com.mysql.jdbc.Driver
+server:
+  port: 8000
