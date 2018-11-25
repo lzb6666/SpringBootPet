@@ -23,4 +23,7 @@ public interface AdoptMapper {
 
     @Select("select * from recoder_view where recordID=#{recordID}")
     AdoptRecord select(String recordID);
+
+    @Update("update pet set isAdopt='false' where petID=#{petID}")
+    int updateAdopt(String petID);
 }

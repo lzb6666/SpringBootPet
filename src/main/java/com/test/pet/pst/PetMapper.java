@@ -10,12 +10,13 @@ import java.util.List;
 
 @Repository
 public interface PetMapper {
-    @Select("select * from pet where owner is null limit #{start},#{end}")
+    @Select("select * from adopt_view limit #{start},#{end}")
     List<Pet> selectPets(@Param("start") int start,@Param("end") int end);
 
     @Select("select * from pet where petID=#{petID}")
     Pet selectByID(String petID);
 
-    @Insert("insert into pet (petID,name,detail,imgURL) values (#{petID},#{name},#{detail},#{imgURL})")
+    @Insert("insert into pet (petID,name,detail,imgURL,owner,sex,age,variety,healthStatus,other) values (#{petID},#{name},#{detail},#{imgURL}" +
+            ",#{owner},#{sex},#{age},#{variety},#{healthStatus},#{other})")
     int insertPet(Pet pet);
 }

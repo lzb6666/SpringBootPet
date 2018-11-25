@@ -9,24 +9,14 @@ public class Adopt {
     private String userID;
     private String petID;
     private String adoptTime;
-    private String status;
 
-    public Adopt(String userID, String petID,String status) {
+    public Adopt(String userID, String petID) {
         this.recordID= UUID.randomUUID().toString();
         this.userID = userID;
         this.petID = petID;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.adoptTime=df.format(new Date());
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public String getRecordID() {
         return recordID;
     }

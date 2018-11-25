@@ -24,7 +24,6 @@ public class AdoptController {
     @RequestMapping("")
     public PetResult adopt(String petID, String userID){
         if (adoptService.adopt(petID, userID)){
-
             return new CodeResult(PetCode.SUCCESS,"领养成功");
         }else{
             return new CodeResult(PetCode.FAIL,"领养失败");

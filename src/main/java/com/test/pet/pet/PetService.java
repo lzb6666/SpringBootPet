@@ -15,8 +15,8 @@ import java.util.UUID;
 
 @Service
 public class PetService {
-    //private String filePath="e:\\test\\";
-    private String filePath="/usr/share/tomcat7/image/pet/";
+    private String filePath="e:\\test\\";
+    //private String filePath="/usr/share/tomcat7/image/pet/";
     @Autowired
     private PetMapper petMapper;
     public List<Pet> pets(int start, int end){
