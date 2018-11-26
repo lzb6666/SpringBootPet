@@ -23,7 +23,12 @@ public class AccountService {
     @Autowired
     private VCodeMapper vCodeMapper;
     public User login(String phoneNum, String password){
-        return accountMapper.select(phoneNum,password);
+        User user=accountMapper.select(phoneNum,password);
+        if (user!=null){
+            return selectUserById(user.getUserID());
+        }else {
+            return null;
+        }
     }
 
     @Transactional
@@ -57,8 +62,10 @@ public class AccountService {
         }
     }
 
-    public boolean resetPwd(String phoneNum,String newPwd){
-        if (accountMapper.updatePwdByPhone(phoneNum,newPwd)==1){
+
+
+    public boolean resetPwd(String userID,String newPassword){
+        if (accountMapper.updatePwdByUserID(userID,newPassword)==1){
             return true;
         }else {
             return false;
@@ -87,6 +94,15 @@ public class AccountService {
             return new CodeResult(200,"用户信息更新成功");
         }else {
             return new CodeResult(400,"用户信息更新失败");
+        }
+    }
+
+    public CodeResult vlfOldPassword(String userID,String oldPassword){
+        String user=accountMapper.vlfOld(userID,oldPassword);
+        if (user==null || user.length()<1){
+            return new CodeResult(400,"原密码错误");
+        }else{
+            return new CodeResult(200,"密码效验成功");
         }
     }
 }

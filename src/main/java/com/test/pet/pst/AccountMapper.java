@@ -33,4 +33,10 @@ public interface AccountMapper {
     @Update("update user set username=#{username},sex=#{sex},age=#{age},career=#{career},city=#{city}" +
             ",petExperience=#{petExperience},preference=#{preference} where userID=#{userID}")
     int updateUser(User user);
+
+    @Update("update user set password=#{password} where userID=#{userID}")
+    int updatePwdByUserID(@Param("userID")String userID,@Param("password") String password);
+
+    @Select("select userID from user where userID=#{userID} and password=#{password}")
+    String vlfOld(@Param("userID")String userID,@Param("password") String password);
 }

@@ -1,6 +1,7 @@
 package com.test.pet.pet;
 
 import com.test.pet.po.Pet;
+import com.test.pet.pst.AdoptMapper;
 import com.test.pet.pst.PetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +16,14 @@ import java.util.UUID;
 
 @Service
 public class PetService {
-    private String filePath="e:\\test\\";
-    //private String filePath="/usr/share/tomcat7/image/pet/";
+    //private String filePath="e:\\test\\";
+    private String filePath="/usr/share/tomcat7/image/pet/";
     @Autowired
     private PetMapper petMapper;
-    public List<Pet> pets(int start, int end){
-        if (end-start>10){
-            end=start+10;
-        }
-        return petMapper.selectPets(start,end);
+    @Autowired
+    private AdoptMapper adoptMapper;
+    public List<Pet> pets(){
+        return petMapper.selectPets();
     }
 
     public Pet pet(String petID){
@@ -40,6 +40,17 @@ public class PetService {
         Path path = Paths.get(filePath + fileName);
         Files.write(path, bytes);
         return "http://193.112.44.141/image/pet/" + fileName;
+    }
 
+    public void setAdopt2False(String petID){
+        adoptMapper.updateAdopt(petID);
+    }
+
+    public List<Pet> myPets(String userID){
+        return petMapper.selectMyPet(userID);
+    }
+
+    public int updatePet(Pet pet){
+        return petMapper.update(pet);
     }
 }

@@ -15,6 +15,30 @@ public class Pet {
     private String other;
     private String phoneNum;
 
+    public Pet(String petID, String name, String detail, String imgURL) {
+        this.petID = petID;
+        this.name = name;
+        this.detail = detail;
+        this.imgURL = imgURL;
+    }
+
+    public Pet(String petID) {
+        this.petID = petID;
+    }
+
+    public Pet(String petID, String name, String detail, String imgURL, String owner, String variety, String sex, String age, String healthStatus, String other) {
+        this.petID = petID;
+        this.name = name;
+        this.detail = detail;
+        this.imgURL = imgURL;
+        this.owner = owner;
+        this.variety = variety;
+        this.sex = sex;
+        this.age = age;
+        this.healthStatus = healthStatus;
+        this.other = other;
+    }
+
     public Pet(String petID, String name, String detail, String imgURL, String owner, String variety, String sex, String age, String healthStatus, String other, String phoneNum) {
         this.petID = petID;
         this.name = name;

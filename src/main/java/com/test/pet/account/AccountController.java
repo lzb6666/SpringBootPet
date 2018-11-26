@@ -23,6 +23,7 @@ public class AccountController {
         return user;
     }
 
+    //@param type:注册1 忘记密码2
     @RequestMapping("/VCode")
     public PetResult vCode(String phoneNum,String type){
         try{
@@ -55,12 +56,13 @@ public class AccountController {
     }
 
     @RequestMapping("/reset")
-    public PetResult resetPassword(String phoneNum,String VCode,String newPassword){
-        if (accountService.vlfCode(phoneNum,VCode,"resetPassword")){
-            accountService.resetPwd(phoneNum,newPassword);
+    public PetResult resetPassword(String userID,String oldPassword,String newPassword){
+        CodeResult codeResult=accountService.vlfOldPassword(userID,oldPassword);
+        if (codeResult.getRstCode()==200){
+            accountService.resetPwd(userID,newPassword);
             return new CodeResult(PetCode.SUCCESS," 重置密码成功");
         }else{
-            return new CodeResult(PetCode.FAIL,"重置密码失败");
+            return codeResult;
         }
     }
 
