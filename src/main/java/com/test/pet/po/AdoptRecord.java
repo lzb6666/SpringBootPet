@@ -18,6 +18,17 @@ public class AdoptRecord {
         this.imgURL = imgURL;
     }
 
+    public AdoptRecord(String recordID, String petID, String petName, String petDetail, String imgURL, String owner, String adoptTime, String userID) {
+        this.recordID = recordID;
+        this.petID = petID;
+        this.petName = petName;
+        this.petDetail = petDetail;
+        this.imgURL = imgURL;
+        this.owner = owner;
+        this.adoptTime = adoptTime;
+        this.userID = userID;
+    }
+
     public AdoptRecord(String recordID, String petName, String petDetail, String imgURL, String owner, String adoptTime, String userID) {
         this.recordID = recordID;
         this.petName = petName;

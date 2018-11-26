@@ -26,4 +26,11 @@ public interface AccountMapper {
 
     @Update("update user set headImgURL=#{imgURL} where userID=#{userID}")
     int updateImg(@Param("imgURL") String imgURL,@Param("userID") String userID);
+
+    @Select("select userID,username,headImgURL,sex,age,career,city,petExperience,preference from user where userID=#{userID}")
+    User selectUser(String userID);
+
+    @Update("update user set username=#{username},sex=#{sex},age=#{age},career=#{career},city=#{city}" +
+            ",petExperience=#{petExperience},preference=#{preference} where userID=#{userID}")
+    int updateUser(User user);
 }

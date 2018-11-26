@@ -4,6 +4,7 @@ import com.test.pet.po.User;
 import com.test.pet.po.VCode;
 import com.test.pet.pst.AccountMapper;
 import com.test.pet.pst.VCodeMapper;
+import com.test.pet.util.result.CodeResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,5 +73,20 @@ public class AccountService {
         String imgURL="http://193.112.44.141/image/pet/" + fileName;
         accountMapper.updateImg(imgURL,userID);
         return imgURL;
+    }
+
+    public User selectUserById(String userID){
+        return accountMapper.selectUser(userID);
+    }
+
+    public CodeResult updateUser(User user){
+        if (user.getUserID()==null){
+            return new CodeResult(400,"用户不存在");
+        }
+        if (accountMapper.updateUser(user)==1){
+            return new CodeResult(200,"用户信息更新成功");
+        }else {
+            return new CodeResult(400,"用户信息更新失败");
+        }
     }
 }

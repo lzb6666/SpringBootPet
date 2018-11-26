@@ -73,6 +73,15 @@ public class AccountController {
             return new CodeResult(400,"头像信息上传失败");
         }
         return new CodeResult(200,"头像信息上传成功");
+    }
 
+    @RequestMapping("/info")
+    public PetResult user(String userID){
+        return accountService.selectUserById(userID);
+    }
+
+    @RequestMapping("/update")
+    public CodeResult uploadUser(User user){
+        return accountService.updateUser(user);
     }
 }
