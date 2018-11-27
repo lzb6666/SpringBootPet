@@ -43,7 +43,7 @@ public class NurseService {
 
     public boolean process(String nurseID,String result){
         if (result.equals("ok")){
-            if (nurseMapper.recipient(nurseID,"complete")==1){
+            if (nurseMapper.recipient(nurseID,"completed")==1){
                 return true;
             }
         }else if (result.equals("no")){
@@ -70,6 +70,18 @@ public class NurseService {
 
     public List<Nurse> getAllRe(String userID){
         return nurseMapper.selectAllRe(userID);
+    }
+
+    public List<Nurse> getAv(String userID){
+        return nurseMapper.selectAv(userID);
+    }
+
+    public List<Nurse> getApplying(String userID){
+        return nurseMapper.selectApply(userID);
+    }
+
+    public List<Nurse> getAllcmp(String userID){
+        return nurseMapper.selectCmp(userID);
     }
 
 }

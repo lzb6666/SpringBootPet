@@ -39,4 +39,13 @@ public interface NurseMapper {
 
     @Select("select * from nurse where recipient=#{userID} and status <> 'available'")
     List<Nurse> selectAllRe(String userID);
+
+    @Select("select * from nurse where announcer=#{userID} and status='available'")
+    List<Nurse> selectAv(String userID);
+
+    @Select("select * from nurse where announcer=#{userID} and status='applying'")
+    List<Nurse> selectApply(String userID);
+
+    @Select("select * from nurse where announcer=#{userID} and status='completed'")
+    List<Nurse> selectCmp(String userID);
 }

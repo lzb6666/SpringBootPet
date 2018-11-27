@@ -78,4 +78,19 @@ public class NurseController {
     public List<Nurse> reRecord(String userID){
         return nurseService.getAllRe(userID);
     }
+
+    @RequestMapping("/avRecords")
+    public List<Nurse> recordAv(String userID){
+        return nurseService.getAllSend(userID);
+    }
+
+    @RequestMapping("/applyRecords")
+    public List<Nurse> recordApply(String userID){
+        return nurseService.getAllSend(userID);
+    }
+
+    @RequestMapping("/cmpRecords")
+    public List<Nurse> recordCmp(String userID){
+        return nurseService.getAllSend(userID);
+    }
 }
