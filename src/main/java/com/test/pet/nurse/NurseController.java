@@ -81,16 +81,16 @@ public class NurseController {
 
     @RequestMapping("/avRecords")
     public List<Nurse> recordAv(String userID){
-        return nurseService.getAllSend(userID);
+        return nurseService.getAv(userID);
     }
 
     @RequestMapping("/applyRecords")
     public List<Nurse> recordApply(String userID){
-        return nurseService.getAllSend(userID);
+        return nurseService.getApplying(userID);
     }
 
     @RequestMapping("/cmpRecords")
     public List<Nurse> recordCmp(String userID){
-        return nurseService.getAllSend(userID);
+        return nurseService.getAllcmp(userID);
     }
 }
